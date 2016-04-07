@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('7minworkout')
-	.controller('WorkoutCtrl', ['$scope', function ($scope) {
+	.controller('WorkoutCtrl', ['$scope','$interval', function ($scope, $interval) {
 		function WorkoutPlan(args) {
 			this.exercises = [];
 			this.name = args.name;
@@ -73,6 +73,10 @@ angular.module('7minworkout')
 		var startExercise = function(exerciseplan){
 			$scope.currentExercise = exerciseplan;
 			$scope.currentExerciseDuration = 0;
+
+			$interval(function(){
+				$scope.currentExerciseDuration++;
+			}, 1000, $scope.currentExercise.duration);
 		};
 
 		// start the module
