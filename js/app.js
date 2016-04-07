@@ -8,16 +8,12 @@ angular.module('app', ['ngRoute','7minworkout'])
 		$routeProvider.when('/workout', {
 			templateUrl: 'partials/workout.xhtml'
 		});
-		$routeProvider.when('/relax', {
-			templateUrl: 'partials/relax.xhtml'
-		});
 		$routeProvider.when('/end', {
 			templateUrl: 'partials/end.xhtml'
 		});
 
 		$routeProvider.otherwise({ redirectTo: '/start' });
 	});
-
 
 angular.module('7minworkout', []);
 

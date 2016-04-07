@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('7minworkout')
-	.controller('WorkoutCtrl', ['$scope','$interval', function ($scope, $interval) {
+	.controller('WorkoutCtrl', ['$scope','$interval','$location', function ($scope, $interval, $location) {
 		function WorkoutPlan(args) {
 			this.exercises = [];
 			this.name = args.name;
@@ -123,8 +123,10 @@ angular.module('7minworkout')
 
 				if (nextExcercise){
 					startExercise(nextExcercise);
+					$location.path('/workout');
 				} else{
 					console.log('Work Out completed !!!')
+					$location.path('/end');
 				}
 			}
 		});
