@@ -1,7 +1,8 @@
 # Angular JS by Example
+'AngularJS by Example' By Chandermani
 
 ## Pre requisite for Environment
-Node should install
+Node (NPM) should install
 
 ## Installing Express server
 * Install Express server using `npm install -g express`
