@@ -79,6 +79,38 @@ angular.module('7minworkout')
 			}, 1000, $scope.currentExercise.duration);
 		};
 
+		var getNextExcercise = function(currentExcercise){
+			var nextExcercise;
+
+			if (currentExcercise === restExercise){
+				nextExcercise = workoutPlan.exercises.shift();
+			}else{
+				if (workoutPlan.exercises.length != 0){
+					nextExcercise = restExercise;
+				}
+			}
+
+			return nextExcercise;
+		};
+
+		// Addining a Listerner on duration
+		/*
+		*  $scope.$watch(expression, listener);
+		*/
+		$scope.$watch('currentExerciseDuration', function(val){
+			if (val == $scope.currentExercise.duration){
+				console.log($scope.currentExercise.details.title + ' is Completed !!!');
+
+				var nextExcercise = getNextExcercise($scope.currentExercise);
+
+				if (nextExcercise){
+					startExercise(nextExcercise);
+				} else{
+					console.log('Work Out completed !!!')
+				}
+			}
+		});
+
 		// start the module
 		init();
 	}]);
