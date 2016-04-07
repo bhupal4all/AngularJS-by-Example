@@ -1,7 +1,13 @@
 'use strict';
 
 angular.module('app', ['ngRoute','7minworkout'])
-	.config(function($routeProvider){
+	.config(function($routeProvider, $sceDelegateProvider){
+		$sceDelegateProvider.resourceUrlWhitelist([
+			// Allowed Urls
+			'self',
+			'http://*.youtube.com/**'
+			]);
+
 		$routeProvider.when('/start', {
 			templateUrl: 'partials/start.xhtml'
 		});
