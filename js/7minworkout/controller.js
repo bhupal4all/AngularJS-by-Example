@@ -7,6 +7,19 @@ angular.module('7minworkout')
 			this.name = args.name;
 			this.title = args.title;
 			this.restBetweenExercise = args.restBetweenExercise;
+
+			this.totalWorkoutDuration = function(){
+
+				if (this.exercises.length == 0) return 0;
+
+				var totalTime = 0;
+				angular.forEach(this.exercises, function(workout){
+					totalTime = totalTime + workout.duration;
+				});
+
+				totalTime = totalTime + (this.restBetweenExercise * (this.exercises.length-1));
+				return totalTime;
+			};
 		};
 
 		function Exercise(args) {
@@ -29,6 +42,7 @@ angular.module('7minworkout')
 
 		var startWorkOut = function(){
 			workoutPlan = createWorkout();
+			$scope.totalRemainingTime = workoutPlan.totalWorkoutDuration();
 
 			restExercise = {
 					details: new Exercise({
@@ -39,6 +53,10 @@ angular.module('7minworkout')
 						}),
 					duration: workoutPlan.restBetweenExercise
 				};
+
+			$interval(function(){
+				$scope.totalRemainingTime--;
+			}, 1000, $scope.totalRemainingTime);
 
 			startExercise(workoutPlan.exercises.shift());
 		};
@@ -66,8 +84,8 @@ angular.module('7minworkout')
 					4. As you return to the ground, bring your feet together and your hands back to your sides with your arms fully extended.\
 					5. Continue without pause for the desired amount of time or repetitions."
 				}),
-				duration: 10
-			});
+			duration: 10
+		});
 		
 		workout.exercises.push({
 			details: new Exercise({
@@ -82,8 +100,8 @@ angular.module('7minworkout')
 						4. Bend your knees and lower into a squat position until your thighs are parallel to the floor and hold the position\
 						5. Return to starting position by straightening your knees and standing tall again."
 				}),
-				duration: 10
-			});
+			duration: 10
+		});
 
 			return workout;
 		};
