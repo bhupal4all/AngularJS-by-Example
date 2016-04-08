@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app', ['ngRoute','7minworkout'])
+angular.module('app', ['ngRoute','ngSanitize','7minworkout'])
 	.config(function($routeProvider, $sceDelegateProvider){
 		$sceDelegateProvider.resourceUrlWhitelist([
 			// Allowed Urls
