@@ -43,6 +43,7 @@ angular.module('7minworkout')
 		var startWorkOut = function(){
 			workoutPlan = createWorkout();
 			$scope.totalRemainingTime = workoutPlan.totalWorkoutDuration();
+			$scope.workoutPlan = workoutPlan;
 
 			restExercise = {
 					details: new Exercise({
