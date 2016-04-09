@@ -153,3 +153,8 @@ angular.module('7minworkout')
 		// start the module
 		init();
 	}]);
+
+angular.module('7minworkout')
+	.contoller('WorkoutAudioController', ['$scope', function($scope){
+		
+	}]);
