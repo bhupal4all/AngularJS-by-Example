@@ -179,8 +179,18 @@ angular.module('7minworkout')
 			console.log('Resumed');
 		};
 
+
 	}]);
 
 angular.module('7minworkout')
 	.controller('WorkoutAudioController', ['$scope', function($scope){
+		// Audio Controls
+		$scope.$watch('workoutPaused', function(newValue, oldValue){
+			if (newValue){
+				$scope.ticksAudio.pause();
+			} else {
+				$scope.ticksAudio.play();
+			}
+		});
+
 	}]);
