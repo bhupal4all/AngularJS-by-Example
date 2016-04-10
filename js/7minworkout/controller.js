@@ -55,10 +55,6 @@ angular.module('7minworkout')
 					duration: workoutPlan.restBetweenExercise
 				};
 
-			$interval(function(){
-				$scope.totalRemainingTime--;
-			}, 1000, $scope.totalRemainingTime);
-
 			startExercise(workoutPlan.exercises.shift());
 		};
 
@@ -111,9 +107,17 @@ angular.module('7minworkout')
 			$scope.currentExercise = exerciseplan;
 			$scope.currentExerciseDuration = 0;
 
-			$interval(function(){
+			$scope.exerciseIntervalPromise = startExerciseTimeTracking();
+		};
+
+		var startExerciseTimeTracking = function(){
+			console.log('Setting Interval');
+			var promise = $interval(function(){
 				$scope.currentExerciseDuration++;
-			}, 1000, $scope.currentExercise.duration);
+				$scope.totalRemainingTime--;
+			}, 1000, $scope.currentExercise.duration - $scope.currentExerciseDuration);
+
+			return promise;
 		};
 
 		var getNextExcercise = function(currentExcercise){
@@ -165,10 +169,14 @@ angular.module('7minworkout')
 
 		$scope.pauseWorkout = function(){
 			$scope.workoutPaused = true;
+			$interval.cancel($scope.exerciseIntervalPromise);
+			console.log('Paused');
 		};
 
 		$scope.resumeWorkout = function(){
 			$scope.workoutPaused = false;
+			$scope.exerciseIntervalPromise = startExerciseTimeTracking();
+			console.log('Resumed');
 		};
 
 	}]);
