@@ -1,7 +1,7 @@
 <div class="row workout-app-container">
 	<div id="description-panel" class="col-sm-2" ng-include = "'partials/description.xhtml'"> </div>
 
-	<div id="exercise-pane" class="col-sm-7">
+	<div id="exercise-pane" class="col-sm-7" ng-mouseover="showPauseOverlay=true" ng-mouseleave="showPauseOverlay=false">
 	    <div class="row workout-display-div">
 	    	<h4>Workout Remaining Time - {{ totalRemainingTime | secondsToTime }}</h4>
 	        <h1>{{currentExercise.details.title}}</h1>
@@ -14,6 +14,15 @@
 	        	<h3 class='col-sm-6 text-left'>Time Remaining: <strong>{{currentExercise.duration-currentExerciseDuration}}</strong></h3>
 	        	<h3 class='col-sm-6 text-right' ng-if="currentExercise.details.name == 'Rest'">Next Workout: <strong>{{workoutPlan.exercises[0].details.title}}</strong></h3>
 	        </div>
+
+			<div id="pause-overlay" ng-click="pauseResumeToggle()" ng-show="showPauseOverlay" >
+				<span class="glyphicon glyphicon-pause pause absolute-center"
+			    	ng-class="{'glyphicon-pause' : !workoutPaused, 'glyphicon-play' : workoutPaused}"></span>
+			</div>
+
+			<span ng-controller="WorkoutAudioController">
+				<audio media-player="ticksAudio" loop autoplay src="content/tick10s.mp3"></audio>
+			</span>
 	    </div>
 	</div>
 
@@ -31,8 +40,4 @@
 	        </div>
 	    </div>
 	</script>
-
-	<span ng-controller="WorkoutAudioController">
-		<audio media-player="ticksAudio" loop autoplay src="content/tick10s.mp3"></audio>
-	</span>
 </div>

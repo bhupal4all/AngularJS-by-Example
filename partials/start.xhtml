@@ -1,13 +1,14 @@
 <div id="exercise-pane" class="col-sm-2">
 </div>
 
-<div id="exercise-pane" class="col-sm-7">
+<div id="exercise-pane" class="col-sm-7" ng-mouseenter = "showPauseOverlay=true" ng-mouseleave="showPauseOverlay=false">
 	<div class="row">
         <h1 class='text-center'>Ready for work out !!!</h1>
         
-	    <div id="start" class="row">
+	    <div id="start" class="row" >
+            <img ng-src="img/start.png" class="center-block" />
             <a href="#/workout">
-                <img ng-src="img/start.png" class="center-block" />
+				<span class="glyphicon glyphicon-play absolute-center" ng-show="showPauseOverlay"></span>
             </a>
         </div>
 	</div> 

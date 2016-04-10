@@ -152,9 +152,27 @@ angular.module('7minworkout')
 
 		// start the module
 		init();
+
+
+		// - start/stop
+		$scope.pauseResumeToggle = function(){
+			if ($scope.workoutPaused){
+				$scope.resumeWorkout();
+			} else {
+				$scope.pauseWorkout();
+			}
+		};
+
+		$scope.pauseWorkout = function(){
+			$scope.workoutPaused = true;
+		};
+
+		$scope.resumeWorkout = function(){
+			$scope.workoutPaused = false;
+		};
+
 	}]);
 
 angular.module('7minworkout')
-	.contoller('WorkoutAudioController', ['$scope', function($scope){
-		
+	.controller('WorkoutAudioController', ['$scope', function($scope){
 	}]);
