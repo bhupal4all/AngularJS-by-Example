@@ -73,7 +73,7 @@ angular.module('7minworkout')
 					in sets with a fixed number of repetitions per set.\
 					To increase intensity, bend your arms slightly as you raise them to engage your biceps and triceps and squeezing them during each rep.",
 				image: "img/JumpingJacks.png",
-				videos: ["//www.youtube.com/embed/dmYwZH_BNd0", "//www.youtube.com/embed/BABOdJ-2Z6o", "//www.youtube.com/embed/c4DAnQ6DtF8"],
+				videos: ["dmYwZH_BNd0", "BABOdJ-2Z6o", "c4DAnQ6DtF8"],
 				procedure: "1. Stand with your feet together, arms fully extended with your hands by your sides. This is the start position.\
 					<br/>2. Bend your knees slightly then straighten and push through the balls of your feet while straightening your your \
 					knees to jump up spreading your legs to wider than hip width apart.\
@@ -90,7 +90,7 @@ angular.module('7minworkout')
 					title: "Wall Sit",
 					description: "A wall sit, also known as a Roman Chair, is an exercise done to strengthen the quadriceps muscles.",
 					image: "img/wallsit.png",
-					videos: ["//www.youtube.com/embed/y-wV4Venusw", "//www.youtube.com/embed/MMV3v4ap4ro"],
+					videos: ["y-wV4Venusw", "MMV3v4ap4ro"],
 					procedure: "1. Stand tall against a wall with your head and back touching the wall.\
 						<br/>2. Position your feet so that they are shoulder-width apart and a few inches away from the wall.\
 						<br/>3. Rest your arms at your sides.\
